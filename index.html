@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Funcionários | Trem Bão Supermercados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;1,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo__conteudo">
+      <div class="logo" role="img" aria-label="Trem Bão Supermercados">
+        <span class="logo__nome" aria-hidden="true">Trem<span class="logo__pin"></span>Bão</span>
+        <span class="logo__sub" aria-hidden="true">supermercados</span>
+      </div>
+      <div class="topo__texto">
+        <p class="area">Varejo · Supermercado</p>
+        <h1>Cadastro de funcionários</h1>
+      </div>
+    </div>
+    <div class="faixa" aria-hidden="true"></div>
+  </header>
+
+  <main class="layout">
+
+    <section class="cartao" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Novo funcionário</h2>
+
+      <form id="form-cadastro" novalidate>
+
+        <div class="campo">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Ex.: Maria Aparecida Souza">
+          <p class="erro" id="erro-nome" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco" autocomplete="street-address" placeholder="Rua, número, bairro e cidade">
+          <p class="erro" id="erro-endereco" role="alert"></p>
+        </div>
+
+        <div class="linha">
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="nome@exemplo.com">
+            <p class="erro" id="erro-email" role="alert"></p>
+          </div>
+
+          <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="numeric" placeholder="(32) 99999-9999" maxlength="15">
+            <p class="erro" id="erro-telefone" role="alert"></p>
+          </div>
+        </div>
+
+        <div class="linha">
+          <div class="campo">
+            <label for="cargo">Cargo</label>
+            <select id="cargo" name="cargo">
+              <option value="">Selecione o cargo</option>
+            </select>
+            <p class="erro" id="erro-cargo" role="alert"></p>
+          </div>
+
+          <div class="campo">
+            <label for="salario">Salário</label>
+            <input type="text" id="salario" name="salario" readonly value="" placeholder="R$ 0,00" aria-describedby="dica-salario">
+            <p class="dica" id="dica-salario">Preenchido conforme o cargo.</p>
+            <p class="erro" id="erro-salario" role="alert"></p>
+          </div>
+        </div>
+
+        <fieldset class="campo turno">
+          <legend>Turno</legend>
+          <div class="turno__opcoes">
+            <label class="opcao">
+              <input type="radio" name="turno" value="Manhã">
+              <span>Manhã</span>
+            </label>
+            <label class="opcao">
+              <input type="radio" name="turno" value="Tarde">
+              <span>Tarde</span>
+            </label>
+          </div>
+          <p class="erro" id="erro-turno" role="alert"></p>
+        </fieldset>
+
+        <div class="acoes">
+          <button type="submit" class="btn btn--principal">Salvar cadastro</button>
+          <button type="reset" class="btn btn--secundario" id="btn-limpar">Limpar campos</button>
+        </div>
+
+        <p class="mensagem" id="mensagem" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-lista">
+      <div class="lista__cabecalho">
+        <h2 id="titulo-lista">Funcionários cadastrados</h2>
+        <span class="contador" id="contador">0</span>
+      </div>
+
+      <p class="vazio" id="vazio">Nenhum funcionário cadastrado ainda. Preencha o formulário para adicionar o primeiro.</p>
+
+      <div class="tabela-rolagem">
+        <table id="tabela" hidden>
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Turno</th>
+              <th scope="col">Salário</th>
+              <th scope="col"><span class="sr">Ações</span></th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Trem Bão Supermercados. Todos os direitos reservados.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
